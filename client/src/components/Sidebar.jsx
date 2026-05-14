@@ -1,7 +1,8 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { 
-  LayoutDashboard, ShoppingCart, Package, Users, Receipt, BarChart2, Settings, LogOut, History
+  LayoutDashboard, ShoppingCart, Package, Users, Receipt, BarChart2, Settings, LogOut, History, Moon, Sun
 } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const Sidebar = ({ user, onLogout }) => {
   const links = [
@@ -13,6 +14,19 @@ const Sidebar = ({ user, onLogout }) => {
     { name: 'Expenses', path: '/expenses', icon: Receipt },
     { name: 'P&L Reports', path: '/reports', icon: BarChart2 },
   ];
+
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    if (document.documentElement.classList.contains('dark')) {
+      setIsDark(true);
+    }
+  }, []);
+
+  const toggleDark = () => {
+    document.documentElement.classList.toggle('dark');
+    setIsDark(!isDark);
+  };
 
   return (
     <aside className="w-64 bg-white border-r border-slate-200 flex flex-col shadow-sm print:hidden">
@@ -57,6 +71,15 @@ const Sidebar = ({ user, onLogout }) => {
         <NavLink to="/settings" className={({ isActive }) => `w-full flex items-center gap-3 px-4 py-2.5 rounded-xl font-medium transition-all text-sm ${isActive ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-indigo-600'}`}>
           <Settings className="w-5 h-5" /> Settings
         </NavLink>
+        <button
+          onClick={toggleDark}
+          className="w-full flex items-center justify-between px-4 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition-all text-sm"
+        >
+          <div className="flex items-center gap-3">
+            {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />} Theme
+          </div>
+          <span className="text-xs bg-slate-100 px-2 py-0.5 rounded-md">{isDark ? 'Light' : 'Dark'}</span>
+        </button>
         <button
           onClick={onLogout}
           className="w-full flex items-center gap-3 px-4 py-2.5 text-red-500 hover:bg-red-50 rounded-xl font-medium transition-all text-sm"

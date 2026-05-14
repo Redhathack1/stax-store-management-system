@@ -43,3 +43,20 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #94A3B8;
 }
+
+/* Dark Mode Overrides */
+html.dark {
+  filter: invert(1) hue-rotate(180deg);
+  background-color: #111;
+}
+
+html.dark img, 
+html.dark svg, 
+html.dark canvas,
+html.dark #reader {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html.dark .bg-indigo-600, html.dark .text-indigo-600 {
+  filter: hue-rotate(180deg);
+}
