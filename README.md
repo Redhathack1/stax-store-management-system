@@ -36,9 +36,8 @@ Stax is an enterprise-grade Point of Sale (POS) and inventory management engine.
 6. **Start as a Desktop App (Optional):**
    - `cd client && npm run electron:dev`
 
-## Live Demo Link
-- **Frontend:** [https://stax-store.vercel.app](https://stax-store.vercel.app) *(Note: Replace with your actual deployed Vercel URL)*
-- **Backend API:** [https://stax-api.onrender.com](https://stax-api.onrender.com) *(Note: Replace with your actual deployed Render URL)*
+## Live Project Link
+Live Project URL: http://13.60.215.119
 
 ## Thought Process & Decisions
 My primary goal was to build a system that feels like **premium native software**, rather than a standard web page. I enforced strict separation of concerns by keeping the frontend purely presentational and the backend strictly for business logic and validation. 
